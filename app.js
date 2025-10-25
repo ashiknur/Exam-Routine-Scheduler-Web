@@ -14,43 +14,43 @@ const state = {
         'ICT-2209': { credit: 3, batch: '22B' },
     },
     students: {
-        'B21001': { 
+        'IT21001': { 
             regularCourses: ['ICT-2101', 'ICT-2103', 'ICT-2105', 'ICT-2107'], 
             backlogCourses: [] 
         },
-        'B21002': { 
+        'IT21002': { 
             regularCourses: ['ICT-2101', 'ICT-2105', 'ICT-2109'], 
             backlogCourses: ['ICT-2103'] 
         },
-        'B21003': { 
+        'IT21003': { 
             regularCourses: ['ICT-2103', 'ICT-2107', 'ICT-2109'], 
             backlogCourses: [] 
         },
-        'B21004': { 
+        'IT21004': { 
             regularCourses: ['ICT-2101', 'ICT-2103', 'ICT-2107', 'ICT-2109'], 
             backlogCourses: [] 
         },
-        'B21005': { 
+        'IT21005': { 
             regularCourses: ['ICT-2105', 'ICT-2109'], 
             backlogCourses: ['ICT-2101', 'ICT-2103'] 
         },
-        'B22001': { 
+        'IT22001': { 
             regularCourses: ['ICT-2201', 'ICT-2203', 'ICT-2205', 'ICT-2207'], 
             backlogCourses: [] 
         },
-        'B22002': { 
+        'IT22002': { 
             regularCourses: ['ICT-2201', 'ICT-2205', 'ICT-2209'], 
             backlogCourses: ['ICT-2203'] 
         },
-        'B22003': { 
+        'IT22003': { 
             regularCourses: ['ICT-2203', 'ICT-2207', 'ICT-2209'], 
             backlogCourses: [] 
         },
-        'B22004': { 
+        'IT22004': { 
             regularCourses: ['ICT-2201', 'ICT-2203', 'ICT-2207', 'ICT-2209'], 
             backlogCourses: [] 
         },
-        'B22005': { 
+        'IT22005': { 
             regularCourses: ['ICT-2205', 'ICT-2209'], 
             backlogCourses: ['ICT-2201', 'ICT-2203'] 
         },
