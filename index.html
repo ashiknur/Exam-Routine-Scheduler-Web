@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Routine Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.8.2/docx.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span class="nav-title">Exam Scheduler</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-page="home">
+                    <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Home
+                </button>
+                <button class="nav-link" data-page="app">
+                    <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    App
+                </button>
+                <button class="nav-link" data-page="contact">
+                    <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Contact
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <div class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h1 class="hero-title">The Smart Exam Scheduler</h1>
+                    <p class="hero-description">
+                        Create conflict-free exam schedules with intelligent detection, student backlog management, 
+                        and automated scheduling algorithms. Perfect for department heads and academic coordinators.
+                    </p>
+                    <button class="btn btn-primary btn-large" data-page="app">
+                        Get Started
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Features -->
+                <div class="features-section">
+                    <h2 class="section-title">Powerful Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </div>
+                            <h3>Manual Grid Control</h3>
+                            <p>Create custom exam schedules with flexible grid layouts. Define days, shifts, and time slots exactly how you need them.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                            </div>
+                            <h3>Real-time Conflict Detection</h3>
+                            <p>Instantly detect scheduling conflicts including duplicate courses and insufficient study gaps based on credit hours.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <h3>Student & Backlog Management</h3>
+                            <p>Track regular and backlog courses for each student. Automatically differentiate between regular and backlog exams.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                            </div>
+                            <h3>PDF Export</h3>
+                            <p>Export your finalized exam schedule as a professional PDF document ready for distribution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Page -->
+    <div id="app-page" class="page">
+        <div class="app-container">
+            <div class="container">
+                <h1 class="page-title">Exam Routine Generator</h1>
+                
+                <div class="app-layout">
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <!-- Course Manager -->
+                        <div class="panel">
+                            <h3 class="panel-title">
+                                <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Course Management
+                            </h3>
+                            <form id="course-form" class="form">
+                                <div class="form-group">
+                                    <label>Course Code</label>
+                                    <input type="text" id="course-code" placeholder="ICT-2101" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Credit Points</label>
+                                    <input type="number" id="course-credit" placeholder="3" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Batch Name</label>
+                                    <input type="text" id="course-batch" placeholder="21B" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Add Course
+                                </button>
+                            </form>
+                            <div class="search-box">
+                                <input type="text" id="course-search" placeholder="Search courses...">
+                            </div>
+                            <div id="course-list" class="item-list"></div>
+                        </div>
+
+                        <!-- Student Manager -->
+                        <div class="panel">
+                            <h3 class="panel-title">
+                                <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                                Student Management
+                            </h3>
+                            <form id="student-form" class="form">
+                                <div class="form-group">
+                                    <label>Student ID</label>
+                                    <input type="text" id="student-id" placeholder="B21013" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Regular Courses (comma-separated)</label>
+                                    <input type="text" id="student-regular" placeholder="ICT-2101, ICT-2103">
+                                </div>
+                                <div class="form-group">
+                                    <label>Backlog Courses (comma-separated)</label>
+                                    <input type="text" id="student-backlog" placeholder="ICT-1201">
+                                </div>
+                                <button type="submit" class="btn btn-success btn-full">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                    Add Student
+                                </button>
+                            </form>
+                            <div class="search-box">
+                                <input type="text" id="student-search" placeholder="Search students...">
+                            </div>
+                            <div id="student-list" class="item-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Main Area -->
+                    <div class="main-area">
+                        <!-- Grid Setup -->
+                        <div class="panel">
+                            <h3 class="panel-title">
+                                <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Schedule Grid Setup
+                            </h3>
+                            <div class="grid-setup">
+                                <div class="form-group">
+                                    <label>Number of Days</label>
+                                    <input type="number" id="num-days" value="5" min="1" max="30">
+                                </div>
+                                <div class="form-group">
+                                    <label>Number of Shifts</label>
+                                    <input type="number" id="num-shifts" value="2" min="1" max="10">
+                                </div>
+                                <button id="generate-grid-btn" class="btn btn-purple btn-full">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                    Generate Grid
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- PDF Header Text -->
+                        <div class="panel">
+                            <h3 class="panel-title">
+                                <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                PDF Header Text
+                            </h3>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label>Enter text to display at the top of the PDF (first line will be larger)</label>
+                                <textarea 
+                                    id="pdf-header-text" 
+                                    rows="4" 
+                                    placeholder="Example:&#10;Department of ICT&#10;Exam Schedule - Fall 2025&#10;Bachelor Program"
+                                    style="width: 100%; resize: vertical; font-family: inherit; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #374151; background: #1f2937; color: #f3f4f6;"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Schedule Grid -->
+                        <div class="panel">
+                            <h3 class="panel-title">Exam Schedule Grid</h3>
+                            <div id="schedule-grid-container"></div>
+                            <div id="conflict-summary"></div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="panel">
+                            <h3 class="panel-title">Actions</h3>
+                            <div class="action-grid">
+                                <button id="auto-schedule-btn" class="btn btn-gradient">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                    </svg>
+                                    Auto-Schedule
+                                </button>
+                                <button id="export-pdf-btn" class="btn btn-success">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Export PDF
+                                </button>
+                                <button id="export-doc-btn" class="btn btn-success">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                    Export DOC
+                                </button>
+                                <button id="save-state-btn" class="btn btn-primary">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                        <polyline points="7 3 7 8 15 8"></polyline>
+                                    </svg>
+                                    Save State
+                                </button>
+                                <button id="load-state-btn" class="btn btn-warning">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    Load State
+                                </button>
+                            </div>
+                            <input type="file" id="load-file-input" accept=".json" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+        <div class="contact-container">
+            <div class="container contact-content">
+                <div class="contact-header">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <h1 class="contact-title">Get in Touch</h1>
+                    <p class="contact-description">Have questions or feedback? We'd love to hear from you.</p>
+                </div>
+
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" id="contact-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Email</label>
+                            <input type="email" id="contact-email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" id="contact-subject" placeholder="How can we help?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea id="contact-message" rows="6" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <p>For immediate assistance, you can also reach us at:</p>
+                    <p class="contact-email">support@examscheduler.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="course-select-modal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Select Course</h3>
+            <div id="course-select-list" class="modal-list"></div>
+            <button id="close-course-modal" class="btn btn-secondary btn-full">Cancel</button>
+        </div>
+    </div>
+
+    <div id="conflict-modal" class="modal">
+        <div class="modal-content conflict-modal">
+            <div class="modal-header">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <h3 class="modal-title">Conflict Found!</h3>
+            </div>
+            <div id="conflict-details" class="conflict-details"></div>
+            <div class="modal-actions">
+                <button id="remove-exam-btn" class="btn btn-danger">Remove Exam</button>
+                <button id="ignore-warning-btn" class="btn btn-warning">Ignore Warning</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
